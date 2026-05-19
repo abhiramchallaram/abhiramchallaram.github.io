@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abhiram Challaram — Cybersecurity Professional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0c0f;
+    --bg2: #0f1215;
+    --bg3: #141820;
+    --surface: #1a1f2e;
+    --surface2: #1f2535;
+    --border: rgba(0,255,136,0.12);
+    --border2: rgba(0,255,136,0.25);
+    --accent: #00ff88;
+    --accent2: #00c4ff;
+    --accent3: #ff6b35;
+    --text: #e8edf5;
+    --text2: #8892a4;
+    --text3: #4a5568;
+    --danger: #ff4757;
+    --warn: #ffa502;
+    --mono: 'IBM Plex Mono', monospace;
+    --display: 'Syne', sans-serif;
+    --body: 'DM Sans', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+  /* ── Noise overlay ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+  /* ── Grid lines ── */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── Nav ── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.25rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10,12,15,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--text2);
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    border: 1px solid var(--border2);
+    padding: 0.45rem 1.2rem;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .nav-cta:hover {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  /* ── Sections ── */
+  section { position: relative; z-index: 1; }
+
+  /* ── Hero ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 3rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--accent);
+    display: inline-block;
+  }
+
+  .hero-name {
+    font-family: var(--display);
+    font-size: clamp(3.5rem, 8vw, 7.5rem);
+    font-weight: 800;
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-name .line2 {
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(232,237,245,0.3);
+  }
+
+  .hero-name .accent-word {
+    color: var(--accent);
+    position: relative;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--text2);
+    max-width: 520px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    border-left: 2px solid var(--border2);
+    padding-left: 1.25rem;
+  }
+
+  .hero-metrics {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .metric {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .metric-num {
+    font-family: var(--display);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .metric-num span {
+    color: var(--accent);
+  }
+
+  .metric-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--text3);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 0.85rem 2rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+
+  .btn-primary:hover {
+    background: #00e07a;
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    color: var(--text2);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.2s;
+  }
+
+  .btn-secondary:hover { color: var(--accent); }
+
+  .btn-secondary::after {
+    content: '→';
+    transition: transform 0.3s;
+  }
+
+  .btn-secondary:hover::after { transform: translateX(4px); }
+
+  /* ── Scrolling ticker ── */
+  .ticker-wrap {
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 0.9rem 0;
+    background: var(--bg2);
+    position: relative;
+    z-index: 1;
+  }
+
+  .ticker {
+    display: flex;
+    gap: 0;
+    width: max-content;
+    animation: ticker 30s linear infinite;
+  }
+
+  .ticker-item {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text3);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0 3rem;
+    white-space: nowrap;
+  }
+
+  .ticker-item .dot {
+    color: var(--accent);
+    margin-right: 3rem;
+  }
+
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ── About ── */
+  #about {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 7rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .section-title {
+    font-family: var(--display);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .about-text p {
+    color: var(--text2);
+    font-size: 0.98rem;
+    line-height: 1.9;
+    margin-bottom: 1.2rem;
+  }
+
+  .about-right { display: flex; flex-direction: column; gap: 1rem; }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 1.5rem 1.75rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--accent);
+  }
+
+  .stat-card:hover { border-color: var(--border2); }
+
+  .stat-card.warn::before { background: var(--warn); }
+  .stat-card.danger::before { background: var(--accent2); }
+
+  .stat-num {
+    font-family: var(--display);
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-num span { color: var(--accent); font-size: 1.5rem; }
+  .stat-card.warn .stat-num span { color: var(--warn); }
+  .stat-card.danger .stat-num span { color: var(--accent2); }
+
+  .stat-desc {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--text3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ── Skills ── */
+  #skills {
+    padding: 7rem 3rem;
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .skills-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .skills-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .skill-cat {
+    background: var(--bg2);
+    padding: 2rem 1.5rem;
+    transition: background 0.3s;
+  }
+
+  .skill-cat:hover { background: var(--surface); }
+
+  .skill-cat-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .skill-cat-title {
+    font-family: var(--display);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  .skill-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .pill {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    padding: 0.25rem 0.6rem;
+    background: rgba(0,255,136,0.06);
+    border: 1px solid var(--border);
+    color: var(--text2);
+    transition: all 0.2s;
+  }
+
+  .pill:hover {
+    background: rgba(0,255,136,0.14);
+    border-color: var(--border2);
+    color: var(--accent);
+  }
+
+  /* ── Experience ── */
+  #experience {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 7rem 3rem;
+  }
+
+  .exp-timeline {
+    position: relative;
+    margin-top: 4rem;
+  }
+
+  .exp-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+  }
+
+  .exp-item {
+    padding: 0 0 4rem 3rem;
+    position: relative;
+  }
+
+  .exp-item::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 6px;
+    width: 9px;
+    height: 9px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px var(--bg), 0 0 12px var(--accent);
+  }
+
+  .exp-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .exp-company {
+    font-family: var(--display);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .exp-date {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text3);
+    letter-spacing: 0.1em;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .exp-role {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+  }
+
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .exp-bullets li {
+    font-size: 0.92rem;
+    color: var(--text2);
+    line-height: 1.7;
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .exp-bullets li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.7rem;
+    top: 0.15rem;
+  }
+
+  .highlight {
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  /* ── Projects ── */
+  #projects {
+    padding: 7rem 3rem;
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .projects-inner { max-width: 1200px; margin: 0 auto; }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 4rem;
+  }
+
+  .project-card {
+    background: var(--bg2);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .project-card:hover { background: var(--surface); }
+
+  .project-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+
+  .project-card:hover::after { transform: scaleX(1); }
+
+  .project-num {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--text3);
+    letter-spacing: 0.15em;
+  }
+
+  .project-title {
+    font-family: var(--display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+  }
+
+  .project-desc {
+    font-size: 0.88rem;
+    color: var(--text2);
+    line-height: 1.8;
+    flex: 1;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+  }
+
+  .project-tag {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    padding: 0.2rem 0.55rem;
+    background: rgba(0,196,255,0.08);
+    border: 1px solid rgba(0,196,255,0.2);
+    color: var(--accent2);
+  }
+
+  /* ── Research & Education ── */
+  #research {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 7rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .research-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .research-card::before {
+    content: 'IEEE';
+    position: absolute;
+    top: -0.5rem;
+    right: 1.5rem;
+    font-family: var(--mono);
+    font-size: 4rem;
+    font-weight: 800;
+    color: rgba(0,255,136,0.04);
+    letter-spacing: -0.05em;
+    pointer-events: none;
+  }
+
+  .research-badge {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    border: 1px solid var(--border2);
+    padding: 0.3rem 0.8rem;
+    display: inline-block;
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+  }
+
+  .research-title {
+    font-family: var(--display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  .research-desc {
+    font-size: 0.88rem;
+    color: var(--text2);
+    line-height: 1.8;
+  }
+
+  .edu-list { display: flex; flex-direction: column; gap: 2rem; }
+
+  .edu-item {
+    border-left: 2px solid var(--border);
+    padding: 0 0 0 1.5rem;
+    position: relative;
+  }
+
+  .edu-item::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 4px;
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  .edu-degree {
+    font-family: var(--display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+  }
+
+  .edu-school {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--accent2);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  .edu-meta {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--text3);
+    letter-spacing: 0.1em;
+  }
+
+  .edu-gpa {
+    color: var(--warn);
+  }
+
+  /* ── Contact ── */
+  #contact {
+    padding: 7rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #contact::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(ellipse, rgba(0,255,136,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .contact-inner { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; }
+
+  .contact-title {
+    font-family: var(--display);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-title em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .contact-sub {
+    color: var(--text2);
+    font-size: 0.98rem;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+
+  .contact-link {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    padding: 0.85rem 1.75rem;
+    border: 1px solid var(--border);
+    color: var(--text2);
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .contact-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(0,255,136,0.05);
+  }
+
+  .contact-link.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+    font-weight: 500;
+  }
+
+  .contact-link.primary:hover {
+    background: #00e07a;
+  }
+
+  /* ── Footer ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg2);
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-copy {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--text3);
+    letter-spacing: 0.1em;
+  }
+
+  .footer-status {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,255,136,0.4); }
+    50% { opacity: 0.7; box-shadow: 0 0 0 4px rgba(0,255,136,0); }
+  }
+
+  /* ── Animations ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fade-up-delay-1 { transition-delay: 0.1s; }
+  .fade-up-delay-2 { transition-delay: 0.2s; }
+  .fade-up-delay-3 { transition-delay: 0.3s; }
+  .fade-up-delay-4 { transition-delay: 0.4s; }
+
+  /* ── Cursor glow ── */
+  .cursor-glow {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,255,136,0.04) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    transition: left 0.1s, top 0.1s;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    #hero { padding: 7rem 1.5rem 4rem; }
+    #about { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 1.5rem; }
+    #skills { padding: 5rem 1.5rem; }
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    #experience { padding: 5rem 1.5rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    #projects { padding: 5rem 1.5rem; }
+    #research { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 1.5rem; }
+    #contact { padding: 5rem 1.5rem; }
+    footer { padding: 1.5rem; }
+    .hero-metrics { gap: 2rem; flex-wrap: wrap; }
+    .skills-header { flex-direction: column; gap: 1rem; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- Navigation -->
+<nav>
+  <a href="#hero" class="nav-logo">AC_SEC</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:abhiramchallaram02@gmail.com" class="nav-cta">HIRE ME</a>
+</nav>
+
+<!-- Hero -->
+<section id="hero">
+  <div class="hero-tag fade-up">Cybersecurity Professional</div>
+  <h1 class="hero-name fade-up fade-up-delay-1">
+    Abhiram<br>
+    <span class="line2">Challaram</span>
+  </h1>
+  <p class="hero-desc fade-up fade-up-delay-2">
+    Application Security specialist skilled in web vulnerability assessment, IoT threat modeling, and ML-based anomaly detection. Active CTF participant and IEEE-published researcher.
+  </p>
+  <div class="hero-metrics fade-up fade-up-delay-3">
+    <div class="metric">
+      <span class="metric-num">40<span>%</span></span>
+      <span class="metric-label">Attack Surface Reduced</span>
+    </div>
+    <div class="metric">
+      <span class="metric-num">92<span>%</span></span>
+      <span class="metric-label">Threat Detection Rate</span>
+    </div>
+    <div class="metric">
+      <span class="metric-num">10<span>+</span></span>
+      <span class="metric-label">Threats Remediated</span>
+    </div>
+    <div class="metric">
+      <span class="metric-num">3.77</span>
+      <span class="metric-label">Current GPA</span>
+    </div>
+  </div>
+  <div class="hero-actions fade-up fade-up-delay-4">
+    <a href="mailto:abhiramchallaram02@gmail.com" class="btn-primary">GET IN TOUCH</a>
+    <a href="#projects" class="btn-secondary">View Projects</a>
+  </div>
+</section>
+
+<!-- Ticker -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span class="ticker-item"><span class="dot">◆</span>OWASP Top 10</span>
+    <span class="ticker-item"><span class="dot">◆</span>Penetration Testing</span>
+    <span class="ticker-item"><span class="dot">◆</span>IoT Security</span>
+    <span class="ticker-item"><span class="dot">◆</span>Vulnerability Research</span>
+    <span class="ticker-item"><span class="dot">◆</span>MITRE ATT&CK</span>
+    <span class="ticker-item"><span class="dot">◆</span>ML Anomaly Detection</span>
+    <span class="ticker-item"><span class="dot">◆</span>API Security</span>
+    <span class="ticker-item"><span class="dot">◆</span>HIPAA Compliance</span>
+    <span class="ticker-item"><span class="dot">◆</span>CTF Participant</span>
+    <span class="ticker-item"><span class="dot">◆</span>IEEE Published</span>
+    <span class="ticker-item"><span class="dot">◆</span>OWASP Top 10</span>
+    <span class="ticker-item"><span class="dot">◆</span>Penetration Testing</span>
+    <span class="ticker-item"><span class="dot">◆</span>IoT Security</span>
+    <span class="ticker-item"><span class="dot">◆</span>Vulnerability Research</span>
+    <span class="ticker-item"><span class="dot">◆</span>MITRE ATT&CK</span>
+    <span class="ticker-item"><span class="dot">◆</span>ML Anomaly Detection</span>
+    <span class="ticker-item"><span class="dot">◆</span>API Security</span>
+    <span class="ticker-item"><span class="dot">◆</span>HIPAA Compliance</span>
+    <span class="ticker-item"><span class="dot">◆</span>CTF Participant</span>
+    <span class="ticker-item"><span class="dot">◆</span>IEEE Published</span>
+  </div>
+</div>
+
+<!-- About -->
+<section id="about">
+  <div class="about-text">
+    <div class="section-label fade-up">Who I am</div>
+    <h2 class="section-title fade-up fade-up-delay-1">
+      Breaking systems<br>to <em>build</em> better ones
+    </h2>
+    <div class="fade-up fade-up-delay-2">
+      <p>I'm a results-driven cybersecurity professional currently pursuing my M.S. in Cybersecurity at the University of Central Missouri, where I maintain a 3.77 GPA while working as an Application Security Intern.</p>
+      <p>My work spans the full spectrum of offensive and defensive security — from reverse-engineering Mirai botnet C2 architecture to engineering HIPAA-compliant BCP/DRP frameworks for healthcare environments.</p>
+      <p>I thrive at the intersection of research and real-world application, translating complex vulnerability findings into actionable hardening playbooks that sysadmin and security teams can actually use.</p>
+    </div>
+  </div>
+  <div class="about-right">
+    <div class="stat-card fade-up">
+      <div class="stat-num">15<span>+</span></div>
+      <div class="stat-desc">IoT Sensor Systems Hardened @ Kirkwall</div>
+    </div>
+    <div class="stat-card warn fade-up fade-up-delay-1">
+      <div class="stat-num">35<span>%</span></div>
+      <div class="stat-desc">Reduction in Unplanned Downtime Risk</div>
+    </div>
+    <div class="stat-card danger fade-up fade-up-delay-2">
+      <div class="stat-num">100<span>K+</span></div>
+      <div class="stat-desc">Users Protected via Secure Coding Practices</div>
+    </div>
+    <div class="stat-card fade-up fade-up-delay-3">
+      <div class="stat-num">8<span>+</span></div>
+      <div class="stat-desc">Threat Vectors Analyzed in IEEE Research</div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section id="skills">
+  <div class="skills-inner">
+    <div class="skills-header">
+      <div>
+        <div class="section-label fade-up">Arsenal</div>
+        <h2 class="section-title fade-up fade-up-delay-1">Technical <em>Skills</em></h2>
+      </div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-cat fade-up">
+        <span class="skill-cat-icon">🛡</span>
+        <div class="skill-cat-title">Security & Exploitation</div>
+        <div class="skill-pills">
+          <span class="pill">Burp Suite</span>
+          <span class="pill">OWASP ZAP</span>
+          <span class="pill">Metasploit</span>
+          <span class="pill">SQLmap</span>
+          <span class="pill">Nmap</span>
+          <span class="pill">Wireshark</span>
+          <span class="pill">Netcat</span>
+          <span class="pill">Tcpdump</span>
+          <span class="pill">Splunk</span>
+        </div>
+      </div>
+      <div class="skill-cat fade-up fade-up-delay-1">
+        <span class="skill-cat-icon">⚡</span>
+        <div class="skill-cat-title">Scripting & Dev</div>
+        <div class="skill-pills">
+          <span class="pill">Python</span>
+          <span class="pill">Bash</span>
+          <span class="pill">PowerShell</span>
+          <span class="pill">JavaScript</span>
+          <span class="pill">Docker</span>
+          <span class="pill">Git</span>
+          <span class="pill">Postman</span>
+          <span class="pill">Fiddler</span>
+          <span class="pill">curl</span>
+        </div>
+      </div>
+      <div class="skill-cat fade-up fade-up-delay-2">
+        <span class="skill-cat-icon">💻</span>
+        <div class="skill-cat-title">OS & Environments</div>
+        <div class="skill-pills">
+          <span class="pill">Kali Linux</span>
+          <span class="pill">Parrot OS</span>
+          <span class="pill">Ubuntu</span>
+          <span class="pill">Windows</span>
+          <span class="pill">AWS</span>
+          <span class="pill">GitLab</span>
+        </div>
+      </div>
+      <div class="skill-cat fade-up fade-up-delay-3">
+        <span class="skill-cat-icon">📋</span>
+        <div class="skill-cat-title">Frameworks</div>
+        <div class="skill-pills">
+          <span class="pill">OWASP Top 10</span>
+          <span class="pill">MITRE ATT&CK</span>
+          <span class="pill">NIST</span>
+          <span class="pill">HIPAA</span>
+          <span class="pill">CVSS</span>
+          <span class="pill">CVE</span>
+          <span class="pill">CWE</span>
+          <span class="pill">PTES</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Experience -->
+<section id="experience">
+  <div class="section-label fade-up">Career</div>
+  <h2 class="section-title fade-up fade-up-delay-1">Work <em>Experience</em></h2>
+  <div class="exp-timeline">
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-company">Kirkwall Defense Inc.</div>
+        <div class="exp-date">JAN 2026 – PRESENT</div>
+      </div>
+      <div class="exp-role">Application Security Intern · Sioux Falls, SD</div>
+      <ul class="exp-bullets">
+        <li>Hardened IoT network monitoring infrastructure across <span class="highlight">15+ hardware sensor systems</span>, reducing attack surface by <span class="highlight">40%</span> through least-privilege access controls and AES-256 encrypted data pipelines.</li>
+        <li>Deployed ML-based anomaly detection models achieving <span class="highlight">92% threat prediction accuracy</span>, cutting unplanned downtime risk by 35% across critical equipment.</li>
+        <li>Drove compliance efforts across multiple security frameworks, directly supporting audit readiness and reducing policy gaps identified in periodic reviews.</li>
+        <li>Led bi-weekly cross-functional threat intelligence sessions across <span class="highlight">3 teams</span>, proactively surfacing and remediating <span class="highlight">10+ emerging threats</span> before escalation.</li>
+      </ul>
+    </div>
+    <div class="exp-item fade-up fade-up-delay-1">
+      <div class="exp-meta">
+        <div class="exp-company">Rigi</div>
+        <div class="exp-date">JUL 2023 – DEC 2023</div>
+      </div>
+      <div class="exp-role">Frontend SDE Intern · Bangalore</div>
+      <ul class="exp-bullets">
+        <li>Implemented secure coding practices and input validation across React Native and ReactJS components serving <span class="highlight">100,000+ users</span>, mitigating injection and authentication vulnerabilities.</li>
+        <li>Architected a reusable component library that reduced UI development time by an estimated <span class="highlight">30%</span>, enabling faster feature delivery across two product teams.</li>
+        <li>Led sprint coordination and task prioritization for a sub-team, ensuring on-time delivery of all assigned milestones across a 6-month engagement.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+  <div class="projects-inner">
+    <div class="section-label fade-up">Work</div>
+    <h2 class="section-title fade-up fade-up-delay-1">Featured <em>Projects</em></h2>
+    <div class="projects-grid">
+      <div class="project-card fade-up">
+        <div class="project-num">01 / RESEARCH</div>
+        <div class="project-title">Mirai Botnet Analysis & IoT Security Vulnerability Research</div>
+        <div class="project-desc">Reverse-engineered Mirai's infection chain and C2 architecture. Produced a defensive playbook with 10+ actionable mitigations cited in academic and professional peer discussions. Identified critical weaknesses in default credential management and telnet exposure patterns.</div>
+        <div class="project-tags">
+          <span class="project-tag">IoT Security</span>
+          <span class="project-tag">Reverse Engineering</span>
+          <span class="project-tag">C2 Architecture</span>
+          <span class="project-tag">Threat Modeling</span>
+        </div>
+      </div>
+      <div class="project-card fade-up fade-up-delay-1">
+        <div class="project-num">02 / COMPLIANCE</div>
+        <div class="project-title">BCP/DRP Development for Ransomware Response in Healthcare</div>
+        <div class="project-desc">Engineered a HIPAA-compliant Business Continuity and Disaster Recovery plan for a hospital environment, covering RTO/RPO targets, system prioritization, and encrypted backup strategies. Applied the PICERL framework for a ransomware lifecycle playbook.</div>
+        <div class="project-tags">
+          <span class="project-tag">HIPAA</span>
+          <span class="project-tag">BCP/DRP</span>
+          <span class="project-tag">PICERL</span>
+          <span class="project-tag">Ransomware</span>
+        </div>
+      </div>
+      <div class="project-card fade-up fade-up-delay-2">
+        <div class="project-num">03 / EXPLOITATION</div>
+        <div class="project-title">Linux Privilege Escalation & Exploit Analysis</div>
+        <div class="project-desc">Identified and exploited 6 SUID/SGID misconfigurations mapped to CWE-269, demonstrating privilege escalation on hardened Linux environments. Produced a remediation guide applying least-privilege principles directly usable by sysadmin teams.</div>
+        <div class="project-tags">
+          <span class="project-tag">Linux</span>
+          <span class="project-tag">CWE-269</span>
+          <span class="project-tag">SUID/SGID</span>
+          <span class="project-tag">Exploit Dev</span>
+        </div>
+      </div>
+      <div class="project-card fade-up fade-up-delay-3">
+        <div class="project-num">04 / PUBLICATION</div>
+        <div class="project-title">Cybersecurity in AR/VR Environments — IEEE Published</div>
+        <div class="project-desc">Co-authored peer-reviewed research published in IEEE, analyzing 8+ threat vectors across AR/VR platforms. Proposed AI/ML-driven defense mechanisms for next-generation immersive environments.</div>
+        <div class="project-tags">
+          <span class="project-tag">IEEE</span>
+          <span class="project-tag">AR/VR Security</span>
+          <span class="project-tag">AI/ML Defense</span>
+          <span class="project-tag">Research</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Research -->
+<section id="research" style="padding: 7rem 3rem; background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); position: relative; z-index: 1;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <div class="section-label fade-up">Published</div>
+    <h2 class="section-title fade-up fade-up-delay-1">IEEE <em>Research</em></h2>
+    <div class="research-card fade-up fade-up-delay-2" style="margin-top:2.5rem; max-width: 780px;">
+      <div class="research-badge">IEEE · Nov 2025</div>
+      <div class="research-title">Cybersecurity in AR/VR Environments: AI/ML-Driven Defense Mechanisms</div>
+      <div class="research-desc">Co-authored peer-reviewed research analyzing 8+ threat vectors unique to AR/VR platforms — including spatial manipulation, data exfiltration through immersive interfaces, and identity spoofing — and proposing novel AI/ML-driven countermeasures for next-generation immersive systems.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Education -->
+<section id="education" style="position: relative; z-index: 1; padding: 7rem 3rem;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <div class="section-label fade-up">Academic Background</div>
+    <h2 class="section-title fade-up fade-up-delay-1">My <em>Education</em></h2>
+    <div style="margin-top: 3.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+
+      <!-- UCM -->
+      <div class="stat-card fade-up" style="padding: 2.5rem; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: -1rem; right: 1.5rem; font-family: var(--mono); font-size: 5rem; font-weight: 800; color: rgba(0,255,136,0.04); pointer-events:none; letter-spacing:-0.05em;">MS</div>
+        <div style="font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1rem; text-transform: uppercase;">Master's Degree</div>
+        <div style="font-family: var(--display); font-size: 1.25rem; font-weight: 700; color: var(--text); line-height: 1.25; margin-bottom: 0.5rem;">Cybersecurity &<br>Information Assurance</div>
+        <div style="font-family: var(--mono); font-size: 0.72rem; color: var(--accent2); letter-spacing: 0.08em; margin-bottom: 0.4rem; text-transform: uppercase;">University of Central Missouri</div>
+        <div style="font-family: var(--mono); font-size: 0.68rem; color: var(--text3); margin-bottom: 1.25rem;">Aug 2024 – May 2026</div>
+        <div style="display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 1.5rem;">
+          <span style="font-family: var(--display); font-size: 2.2rem; font-weight: 800; color: var(--warn);">3.77</span>
+          <span style="font-family: var(--mono); font-size: 0.65rem; color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em;">GPA / 4.00</span>
+        </div>
+        <div style="border-top: 1px solid var(--border); padding-top: 1.25rem;">
+          <div style="font-family: var(--mono); font-size: 0.62rem; color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem;">Relevant Coursework</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+            <span class="pill">Web App Security</span>
+            <span class="pill">Cryptography</span>
+            <span class="pill">BCP/DRP</span>
+            <span class="pill">Threat Analysis</span>
+            <span class="pill">Network Forensics</span>
+            <span class="pill">Secure Software Eng.</span>
+            <span class="pill">Computer Networks</span>
+            <span class="pill">Machine Learning</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BITS -->
+      <div class="stat-card danger fade-up fade-up-delay-1" style="padding: 2.5rem; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: -1rem; right: 1.5rem; font-family: var(--mono); font-size: 5rem; font-weight: 800; color: rgba(0,196,255,0.04); pointer-events:none; letter-spacing:-0.05em;">BE</div>
+        <div style="font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.15em; color: var(--accent2); margin-bottom: 1rem; text-transform: uppercase;">Bachelor's Degree</div>
+        <div style="font-family: var(--display); font-size: 1.25rem; font-weight: 700; color: var(--text); line-height: 1.25; margin-bottom: 0.5rem;">Computer Science<br>& Engineering</div>
+        <div style="font-family: var(--mono); font-size: 0.72rem; color: var(--accent2); letter-spacing: 0.08em; margin-bottom: 0.4rem; text-transform: uppercase;">BITS Pilani</div>
+        <div style="font-family: var(--mono); font-size: 0.68rem; color: var(--text3); margin-bottom: 1.25rem;">Nov 2020 – May 2024</div>
+        <div style="border-top: 1px solid var(--border); padding-top: 1.25rem; margin-top: 0.5rem;">
+          <div style="font-family: var(--mono); font-size: 0.62rem; color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem;">About the Institution</div>
+          <div style="font-size: 0.88rem; color: var(--text2); line-height: 1.8;">
+            Birla Institute of Technology & Science, Pilani — one of India's most prestigious engineering institutions and a Deemed University of National Importance.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-label fade-up" style="justify-content:center;">Let's work together</div>
+    <h2 class="contact-title fade-up fade-up-delay-1">
+      Ready to <em>secure</em><br>your systems?
+    </h2>
+    <p class="contact-sub fade-up fade-up-delay-2">
+      Open to Application Security, Penetration Testing, and Security Engineering roles. Let's connect and talk about how I can help protect what matters.
+    </p>
+    <div class="contact-links fade-up fade-up-delay-3">
+      <a href="mailto:abhiramchallaram02@gmail.com" class="contact-link primary">
+        ✉ abhiramchallaram02@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/abhiram-challaram" target="_blank" class="contact-link">
+        ⟶ LinkedIn
+      </a>
+      <a href="tel:+917075204648" class="contact-link">
+        ✆ +91 70752 04648
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <span class="footer-copy">© 2025 Abhiram Challaram · Hyderabad, India</span>
+  <span class="footer-status">
+    <span class="status-dot"></span>
+    Available for opportunities
+  </span>
+</footer>
+
+<script>
+  // Cursor glow
+  const glow = document.getElementById('cursorGlow');
+  document.addEventListener('mousemove', e => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+  });
+
+  // Scroll animations
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+  // Hero immediate visibility
+  document.querySelectorAll('#hero .fade-up').forEach(el => {
+    setTimeout(() => el.classList.add('visible'), 100);
+  });
+</script>
+</body>
+</html>
